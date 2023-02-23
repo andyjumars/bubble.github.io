@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>事件冒泡介紹</title>
+	<style>
+		#box{
+			width:200px;
+			height:200px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script type="text/javascript">
+		//事件冒泡:事情開始時由最完整的元素接收,然後逐級向上傳播到比較為不完整的節點
+		//(文檔)IE9以上
+
+		var box = document.getElementById('box');
+		
+		box.onclick = function(){
+			box.innerHTML += 'div\n';
+		}
+
+		document.body.onclick = function(){
+			box.innerHTML += 'body\n';
+		}
+		document.documentElement.onclick = function(){
+			box.innerHTML +='document\n';
+		}
+
+		window.onclick = function(){
+			box.innerHTML +='window\n';
+		}
+
+
+	</script>
+</body>
+</html>
